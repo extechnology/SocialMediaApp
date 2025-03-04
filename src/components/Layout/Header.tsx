@@ -22,7 +22,7 @@ const Header = () => {
     return (
 
         <motion.header
-            className="sticky top-0 z-30 w-full border-b border-border/30 backdrop-blur-sm bg-background/80 px-10"
+            className="sticky top-0 z-30 w-full border-b border-border/30 backdrop-blur-sm bg-background/80 px-5"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -55,21 +55,9 @@ const Header = () => {
                                             animate={{ rotateY: 0 }}
                                             transition={{ duration: 0.5 }}
                                         >
-                                            <div className="rounded-full bg-primary p-1.5 text-primary-foreground">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    className="h-5 w-5"
-                                                >
-                                                    <path d="M17 6.1H3M21 12.1H3M15 18.1H3" />
-                                                </svg>
-                                            </div>
-                                            <span className="ml-2 text-xl font-bold hidden sm:inline-block">Ex App</span>
+                                            
+                                            <span className="ml-2 text-xl italic font-bold sm:inline-block text-primary">Ex App</span>
+
                                         </motion.div>
                                     </motion.div>
                                 </Link>
@@ -97,7 +85,7 @@ const Header = () => {
 
 
                     {/* Mobile Search Button and Bar */}
-                    <div className="sm:hidden flex items-center flex-1">
+                    {/* <div className="sm:hidden flex items-center flex-1">
                         <AnimatePresence>
                             {isMobileSearchOpen ? (
                                 <motion.div
@@ -142,7 +130,7 @@ const Header = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-                    </div>
+                    </div> */}
 
 
                     {/* Theme Toggle  hidden when search is open */}

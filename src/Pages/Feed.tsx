@@ -48,7 +48,7 @@ export default function Feed() {
 
     <>
 
-      <main className="w-full h-full">
+      <main className="max-w-3xl mx-auto transition-all duration-300 ease-in-out px-2 sm:px-0">
 
         {dummyPosts.map((post, index) => (
           <PostCard key={index} post={post} />

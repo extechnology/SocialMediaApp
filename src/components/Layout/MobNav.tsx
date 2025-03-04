@@ -3,6 +3,7 @@ import { Home, Users, Bell, User, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import NotificationBadge from "../Common/NotificationBadge";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 
 
@@ -30,7 +31,7 @@ export const MobileNav = () => {
 
 
     <motion.nav
-      className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-sidebar border-t border-border/30 z-10 backdrop-blur-sm"
+      className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-sidebar border-t border-border/30 z-10 backdrop-blur-sm transition-all duration-300 ease-in-out"
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
@@ -73,30 +74,61 @@ export const MobileNav = () => {
                 >
                   <item.icon className="h-6 w-6 text-white" />
                 </motion.div>
-              ) : (
-                <>
-                  <motion.div
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{
-                      scale: location.pathname === item.path ? [1, 1.2, 1] : 1
-                    }}
-                    transition={{
-                      scale: { duration: 0.3 }
-                    }}
-                  >
-                    <item.icon className={cn(
-                      "h-5 w-5",
-                      location.pathname === item.path ? "text-primary" : "text-muted-foreground"
-                    )} />
-                  </motion.div>
-                  {item.name === "Notifications" && (
-                    <NotificationBadge count={2} />
+              ) :
+
+                item.name === "Profile" ? (
+                  <>
+                    <motion.div
+                      className="rounded-full flex items-center justify-center shadow-md"
+                      whileHover={{
+                        boxShadow: "0 0 12px rgba(59, 130, 246, 0.5)",
+                        scale: 1.05
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ y: 10 }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30
+                      }}
+                    >
+                      <Avatar className="border-2 border-primary group-hover:border-primary transition-all">
+                        <AvatarImage src="https://github.com/shadcn.png" alt="logo" />
+                        <AvatarFallback className="bg-primary/10 text-primary">
+                          {"JD"}
+                        </AvatarFallback>
+                      </Avatar>
+
+                    </motion.div>
+                  </>
+                ) :
+                  (
+                    <>
+                      <motion.div
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        animate={{
+                          scale: location.pathname === item.path ? [1, 1.2, 1] : 1
+                        }}
+                        transition={{
+                          scale: { duration: 0.3 }
+                        }}
+                      >
+                        <item.icon className={cn(
+                          "h-6 w-6",
+                          location.pathname === item.path ? "text-primary" : "text-muted-foreground"
+                        )} />
+                      </motion.div>
+                      {item.name === "Notifications" && (
+                        <NotificationBadge count={2} />
+                      )}
+                    </>
                   )}
-                </>
-              )}
+
             </motion.div>
-            {item.name !== "New" && (
+
+            {/* {item.name !== "New" && (
               <motion.span
                 className={cn(
                   "text-xs mt-1",
@@ -109,9 +141,12 @@ export const MobileNav = () => {
               >
                 {item.name}
               </motion.span>
-            )}
+            )} */}
+
           </Link>
+
         ))}
+
       </div>
 
       {/* Active indicator */}
@@ -136,7 +171,7 @@ export const MobileNav = () => {
         </div>
       </div>
 
-      
+
     </motion.nav>
   );
 };
