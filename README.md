@@ -2,7 +2,7 @@
 
 ## "Where Models Network, Collaborate, and Grow."
 
-![ExFashion Banner](/Screenshot.png)
+![ExFashion Banner](./public/Screenshot.png)
 
 ## 📱 Project Overview
 
@@ -49,13 +49,13 @@ ExFashion is a cutting-edge social media platform designed specifically for mode
 
 ### 🖥 Screenshots
 
-![Login Screen](/Screenshot.png)
+![Login Screen](./public/Screenshot.png)
 *Sleek and intuitive login experience*
 
-![Profile Page](/Screenshot.png)
+![Profile Page](./public/Screenshot.png)
 *Comprehensive profile showcase*
 
-![Gigs Board](/Screenshot.png)
+![Gigs Board](./public/Screenshot.png)
 *Discover exciting professional opportunities*
 
 ### 🗺 User Journey
