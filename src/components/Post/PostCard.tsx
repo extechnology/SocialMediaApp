@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, MessageCircle, Share2 } from "lucide-react";
+import { Bookmark, BookmarkCheckIcon, Heart, MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
@@ -33,6 +33,8 @@ const PostCard = ({ post }: PostCardProps) => {
 
     const [isLiked, setIsLiked] = useState(false);
 
+    const [issaved , setIssaved] = useState(false)
+
     const handleLike = () => {
         setIsLiked(!isLiked);
         setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
@@ -41,7 +43,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
     return (
 
-        <Card className="glass-card mb-6 animate-fade-in overflow-hidden">
+        <Card className="glass-card mb-5 animate-fade-in overflow-hidden shadow-none sm:shadow-md">
 
             <CardHeader className="p-4 pb-0 flex flex-row items-center space-y-0 gap-3">
 
@@ -98,20 +100,20 @@ const PostCard = ({ post }: PostCardProps) => {
                     variant="ghost"
                     size="sm"
                     onClick={handleLike}
-                    className={cn("hover:bg-muted transition-colors", isLiked && "text-red-500")}
+                    className={cn("hover:bg-muted transition-colors hover:cursor-pointer", isLiked && "text-red-500")}
                 >
                     <Heart className={cn("h-4 w-4 mr-1", isLiked && "fill-current")} />
                     <span>{likeCount}</span>
                 </Button>
 
-                <Button variant="ghost" size="sm" className="hover:bg-muted transition-colors">
+                <Button variant="ghost" size="sm" className="hover:bg-muted transition-colors hover:cursor-pointer">
                     <MessageCircle className="h-4 w-4 mr-1" />
                     <span>{post.comments}</span>
                 </Button>
 
-                <Button variant="ghost" size="sm" className="hover:bg-muted transition-colors">
-                    <Share2 className="h-4 w-4 mr-1" />
-                    <span>Share</span>
+                <Button variant="ghost" size="sm" onClick={() => setIssaved(!issaved)} className={cn("hover:bg-muted transition-colors hover:cursor-pointer", issaved && "text-red-500")}>
+                    {issaved ? "Saved" : "Save"}
+                    {issaved ? <BookmarkCheckIcon className="h-4 w-4 mr-1" /> : <Bookmark className="h-4 w-4 mr-1" />}
                 </Button>
                 
             </CardFooter>

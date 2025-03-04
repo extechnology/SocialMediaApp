@@ -20,9 +20,9 @@ export const Layout = () => {
                 <Header />
 
                 {/* Page Content */}
-                <main className="flex-1 pb-20 md:pb-6">
+                <main className="flex-1 pb-20 md:pb-6 transition-all duration-300 ease-in-out">
 
-                    <div className="mx-auto max-w-4xl px-2 sm:px-4 py-4 sm:py-6">
+                    <div className="mx-auto w-full px-0 sm:px-4 py-0 sm:py-6">
                         <Outlet />
                     </div>
 

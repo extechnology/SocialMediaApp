@@ -173,7 +173,9 @@ export const Sidebar = () => {
 
           {/* Sidebar Footer */}
           <div className="mt-auto px-3 space-y-2 border-t border-border/30 pt-4">
+          
             <div className="flex items-center p-2">
+
               <ThemeToggle />
 
               <AnimatePresence>
@@ -187,7 +189,7 @@ export const Sidebar = () => {
                   >
                     <Button
                       variant="ghost"
-                      className="text-destructive hover:text-destructive/80"
+                      className="text-primary hover:text-destructive/80"
                       
                     >
                       <LogOut className="h-5 w-5 mr-2" />
