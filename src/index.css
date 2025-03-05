@@ -129,6 +129,41 @@
 }
 
 
+@layer components {
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm dark:bg-black/80 border border-gray-100/50 dark:border-gray-800/50;
+  }
+
+  .video-control-overlay {
+    @apply opacity-0 transition-opacity duration-300 ease-in-out;
+  }
+
+  .video-container:hover .video-control-overlay {
+    @apply opacity-100;
+  }
+
+  .control-button {
+    @apply rounded-full bg-black/60 p-2 text-white transition-all duration-200 ease-in-out hover:scale-110 hover:bg-black/80;
+  }
+
+  .progress-bar {
+    @apply h-1 bg-gray-200/30 dark:bg-gray-700/50 rounded-full overflow-hidden transition-all duration-200;
+  }
+
+  .progress-bar:hover {
+    @apply h-2;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary to-pink-800 transition-all duration-100 ease-linear;
+  }
+
+  .volume-slider {
+    @apply absolute bottom-full mb-2 bg-black/70 rounded-full p-2 transition-all duration-300 shadow-xl;
+    transform-origin: bottom center;
+  }
+}
+
 
 ::selection {
   background: black;
