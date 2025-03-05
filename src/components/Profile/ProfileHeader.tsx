@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Camera, Edit, Grid, Instagram, Twitter, Link as LinkIcon, Mail, Heart, BookmarkCheckIcon } from "lucide-react";
+import { Camera, Edit, Grid, Instagram, Twitter, Link as LinkIcon, Mail, Heart, BookmarkCheckIcon, UserCheck, UserPlus} from "lucide-react";
 import ProfileStat from "./ProfileStats";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -102,14 +102,21 @@ const ProfileHeader = ({ isCurrentUser = false }: ProfileHeaderProps) => {
                                         variant={isFollowing ? "outline" : "default"}
                                         onClick={() => setIsFollowing(!isFollowing)}
                                         className={cn(
-                                            "w-full transition-all animate-fade-in-up",
+                                            "w-full transition-all animate-fade-in-up hover:cursor-pointer",
                                             isFollowing
                                                 ? "hover:bg-destructive hover:text-destructive-foreground"
-                                                : "bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 border-0 shadow-md hover:shadow-lg"
+                                                : "bg-gradient-to-r from-primary to-pink-700 hover:from-primary hover:to-pink-800 text-white border-0 shadow-md hover:shadow-lg"
                                         )}
                                         style={{ animationDelay: "0.15s" }}
                                     >
                                         {isFollowing ? "Unfollow" : "Follow"}
+
+                                        {isFollowing ? (
+                                            <UserCheck size={16} />
+                                        ) : (
+                                            <UserPlus size={16} />
+                                        )}
+
                                     </Button>
                                 )}
                             </div>
@@ -124,7 +131,7 @@ const ProfileHeader = ({ isCurrentUser = false }: ProfileHeaderProps) => {
                                 <div className="flex flex-wrap items-center gap-2 mb-1">
 
                                     <h1 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-pink-700">John Doe</h1>
-                                    
+
                                     <div className="flex flex-wrap items-center gap-1">
                                         <Badge variant="outline" className="bg-purple-500/10 border-purple-500/30 text-xs font-normal">Model</Badge>
                                         <Badge variant="outline" className="bg-pink-500/10 border-pink-500/30 text-xs font-normal">Photographer</Badge>
