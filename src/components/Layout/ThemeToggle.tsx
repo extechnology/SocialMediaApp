@@ -10,15 +10,15 @@ export const ThemeToggle = () => {
     return (
         <Button
             variant="ghost"
-            size="icon"
+            size="default"
             onClick={toggleTheme}
             className="rounded-full w-10 h-10"
             aria-label="Toggle theme"
         >
             {theme === "light" ? (
-                <Sun className="h-5 w-5 transition-all" />
+                <Sun className="h-8 w-8 transition-all" />
             ) : (
-                <Moon className="h-5 w-5 transition-all" />
+                <Moon className="h-8 w-8 transition-all" />
             )}
         </Button>
     );

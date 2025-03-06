@@ -4,27 +4,33 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import NotificationBadge from "../Common/NotificationBadge";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { useLanguage } from "@/Context/LanguageContext";
 
 
 
 
-// Navbar menu
-const navItems = [
-  { name: "Feed", path: "/feed", icon: Home },
-  { name: "People", path: "/people", icon: Users },
-  { name: "New", path: "/create", icon: Plus },
-  { name: "Notifications", path: "/notifications", icon: Bell },
-  { name: "Profile", path: "/profile", icon: User },
-];
 
 
 
 
 export const MobileNav = () => {
 
+  // Language
+  const { t } = useLanguage();
+
 
   // get current route
   const location = useLocation();
+
+
+  // Navigation items
+  const navItems = [
+    { name: t("feed"), path: "/feed", icon: Home },
+    { name: t("people"), path: "/people", icon: Users },
+    { name: t("new"), path: "/create", icon: Plus },
+    { name: t("notifications"), path: "/notifications", icon: Bell },
+    { name: t("profile"), path: "/profile", icon: User },
+  ];
 
 
   return (

@@ -1,26 +1,34 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Users, Bell, User, LogOut, Plus, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Users, Bell, User, LogOut, Plus, ChevronLeft, ChevronRight, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import NotificationBadge from "../Common/NotificationBadge";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/Context/LanguageContext";
 
 
 
-// Navbar menu
-const navItems = [
-  { name: "Feed", path: "/feed", icon: Home },
-  { name: "People", path: "/people", icon: Users },
-  { name: "Notifications", path: "/notifications", icon: Bell },
-  { name: "Profile", path: "/profile", icon: User },
-];
 
 
 
 export const Sidebar = () => {
+
+
+  // Language
+  const { t } = useLanguage();
+
+
+  // Navbar menu
+  const navItems = [
+    { name: t("feed"), path: "/feed", icon: Home },
+    { name: t("people"), path: "/people", icon: Users },
+    { name: t("notifications"), path: "/notifications", icon: Bell },
+    { name: t("profile"), path: "/profile", icon: User },
+    { name: t("settings"), path: "/settings", icon: Settings },
+  ];
 
 
   // get current route
@@ -32,7 +40,6 @@ export const Sidebar = () => {
   const [isHovering, setIsHovering] = useState(false);
 
 
-
   // Toggle sidebar
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -40,7 +47,7 @@ export const Sidebar = () => {
 
 
   return (
-    
+
     <>
 
       {/* Desktop Sidebar */}
@@ -56,7 +63,7 @@ export const Sidebar = () => {
         transition={{ duration: 0.3 }}
       >
 
-        
+
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-4 border-b border-border/30">
 
@@ -88,7 +95,7 @@ export const Sidebar = () => {
               <ChevronLeft size={20} />
             )}
           </Button>
-          
+
         </div>
 
 
@@ -132,7 +139,7 @@ export const Sidebar = () => {
                       )}
                     </AnimatePresence>
 
-                    {item.name === "Notifications"  && (
+                    {item.name === "Notifications" && (
                       <NotificationBadge count={5} />
                     )}
                   </Button>
@@ -162,7 +169,7 @@ export const Sidebar = () => {
                         exit={{ opacity: 0, width: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        New Post
+                        {t("new")} {t("post")}
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -173,7 +180,7 @@ export const Sidebar = () => {
 
           {/* Sidebar Footer */}
           <div className="mt-auto px-3 space-y-2 border-t border-border/30 pt-4">
-          
+
             <div className="flex items-center p-2">
 
               <ThemeToggle />
@@ -190,10 +197,10 @@ export const Sidebar = () => {
                     <Button
                       variant="ghost"
                       className="text-primary hover:text-destructive/80"
-                      
+
                     >
                       <LogOut className="h-5 w-5 mr-2" />
-                      Logout
+                     {t("logout")}
                     </Button>
                   </motion.div>
                 )}
@@ -212,7 +219,7 @@ export const Sidebar = () => {
                 >
                   <Link to="/profile" className="flex items-center gap-2 group hover:bg-sidebar-accent p-2 rounded-md transition-all">
                     <Avatar className="border-2 border-primary/20 group-hover:border-primary transition-all">
-                      <AvatarImage src="https://github.com/shadcn.png" alt= "logo" />
+                      <AvatarImage src="https://github.com/shadcn.png" alt="logo" />
                       <AvatarFallback className="bg-primary/10 text-primary">
                         {"JD"}
                       </AvatarFallback>
