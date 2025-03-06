@@ -1,19 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, Settings, } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 const Header = () => {
 
+    const navigate = useNavigate();
 
     const [isSearchFocused, setIsSearchFocused] = useState(false);
-
-
-
-
 
 
     return (
@@ -80,21 +78,39 @@ const Header = () => {
                     </div>
 
 
-                
-                    {/* Theme Toggle */}
-                    <AnimatePresence>
+                    <div className="flex justify-center items-center">
 
-                        <motion.div
-                            className="md:hidden"
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 20 }}
-                            transition={{ duration: 0.2 }}
+                        {/* Theme Toggle */}
+                        <AnimatePresence>
+
+                            <motion.div
+                                className="md:hidden"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <ThemeToggle />
+                            </motion.div>
+
+                        </AnimatePresence>
+
+                        <Button
+                            variant="ghost"
+                            size="default"
+                            className={cn(
+                                "md:hidden",
+                                "relative"
+                            )}
+                            onClick={() => navigate('/settings')}
                         >
-                            <ThemeToggle />
-                        </motion.div>
+                            <Settings className="h-8 w-8" />
 
-                    </AnimatePresence>
+                        </Button>
+
+                    </div>
+
+
 
 
                 </div>

@@ -49,6 +49,7 @@ export default function MediaPreview({ file, onRemove }: MediaPreviewProps) {
                     <img
                         src={preview}
                         alt="Preview"
+                        loading="lazy"
                         className="max-h-full max-w-full object-contain"
                     />
                 )}

@@ -14,6 +14,7 @@ const EditProfile = lazy(() => import("./Pages/EditProfile"))
 const PeoplePage = lazy(() => import("./Pages/PeoplePage"))
 const Notifcation = lazy(() => import("./Pages/Notification"))
 const CreatePost = lazy(() => import("./Pages/CreatePost"))
+const Settings = lazy(() => import("./Pages/Settings"))
 const NotFound = lazy(() => import("./Pages/NotFound"))
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
             <Route path="/create" element={<Suspense fallback={<SuspenseLoader fullScreen text="Loading..." />} ><CreatePost /></Suspense>} />
 
             <Route path="/notifications" element={<Suspense fallback={<SuspenseLoader fullScreen text="Loading Notifications..." />} ><Notifcation /></Suspense>} />
+
+            <Route path="/settings" element={<Suspense fallback={<SuspenseLoader fullScreen text="Loading settings..." />} ><Settings /></Suspense>} />
 
           </Route>
 
